@@ -24,9 +24,6 @@ function changeColor(){
         })
     })
 }
-function operatorState(button){
-    button.style.backgroundColor = "red"
-}
 
 const addNumber = (num) =>{
     if(operator === null){
@@ -141,10 +138,6 @@ function clearCal(){
     num2 = ''
     display.innerHTML = ''
 }
-// function getInnerText(ele){
-//     let value = ele.innerText
-//     console.log(value)
-// }
 changeColor()
 
 
