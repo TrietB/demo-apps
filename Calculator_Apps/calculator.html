@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calculator">
+        <div id="display"></div>
+        <div class="row">
+            <div class="button-wrapper"><button class="button" onclick="addNumber(7)">7</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber(8)">8</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber(9)">9</button></div>
+            <div class="button-wrapper"><button class="button" id="delete-btn" >DEL</button></div>
+        </div>
+        <div class="row">
+            <div class="button-wrapper"><button class="button" onclick="addNumber(4)">4</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber(5)">5</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber(6)">6</button></div>
+            <div class="button-wrapper"><button class="operator button" onclick="operation('add')">+</button></div>
+        </div>
+        <div class="row">
+            <div class="button-wrapper"><button class="button" onclick="addNumber(1)">1</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber(2)">2</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber(3)">3</button></div>
+            <div class="button-wrapper"><button class="operator button" onclick="operation('minus')">-</button></div>
+        </div>
+        <div class="row">
+            <div class="button-wrapper"><button class="button">0</button></div>
+            <div class="button-wrapper"><button class="button" onclick="addNumber('.')">.</button></div>
+            <div class="button-wrapper"><button class="operator button" onclick="operation('divide')">/</button></div>
+            <div class="button-wrapper"><button class="operator button" onclick="operation('multiply')">x</button></div>
+        </div>
+        <div class="row">
+            <div class="button-wrapper "><button class="button red-btn" id="clear-btn">C</button></div>
+            <div class="button-wrapper "><button class="button red-btn" id="equal-btn">=</button></div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <script src="./calculator.js"></script>
+</body>
+</html>
