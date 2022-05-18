@@ -1,7 +1,7 @@
 const API_KEY = "8dec6431-9d18-41db-b071-85821307a5dd"
 const API_COUNTRY = `https://holidayapi.com/v1/countries?pretty&key=${API_KEY}`
 const API_LANGUAGE = `https://holidayapi.com/v1/languages?pretty&key=${API_KEY}`
-
+let API_HOLIDAY = `https://holidayapi.com/v1/holidays?pretty&key=${API_KEY}`
 document.getElementById("countries-list-btn").addEventListener("click", () =>{
     renderCountries()
 })
@@ -18,17 +18,31 @@ const month = document.getElementById("month-query")
 const day = document.getElementById("day-query")
 const country = document.getElementById("country-query")
 const language = document.getElementById("language-query")
+const timeArr = [year, month, day, country, language, holidayName]
+const arr = []
+const API_ARR= []
 
+function getInput(target){
+        let newAPI = ''
+        if(target.value  == ''){
+            newAPI = `${API_HOLIDAY}&country=VN&year=2021`
+            API_ARR.push(newAPI)
+        }else{
+            arr.push(`&${target.name}=` + target.value)
+            newAPI = API_HOLIDAY + arr.join('')
+            API_ARR.push(newAPI)
+        }
+}
 
-async function updateURL(){
-    
+function updateURL(arr){
+        arr.map((time) => {getInput(time)})
+        console.log(API_ARR[API_ARR.length -1])
 }
 
 async function getHolidays(){
     try {
-        let API_HOLIDAY = `https://holidayapi.com/v1/holidays?pretty&key=${API_KEY}&country=${country.value}&year=${year.value}&month=${month.value}&day=${day.value}&language=${language.value}`
         
-        const holiday = await fetch(API_HOLIDAY)
+        const holiday = await fetch(API_ARR[API_ARR.length -1])
         if(holiday.ok){
             const data = await holiday.json()
             console.log('holiday', data)
@@ -42,7 +56,9 @@ async function getHolidays(){
 
 async function renderHolidays(){
     try {
+        updateURL(timeArr)
         const data = await getHolidays()
+        console.log(getHolidays())
         const holidaysList = document.getElementById('holidays-list')
         const ul = holidaysList.children[1]
         ul.innerHTML = ''
